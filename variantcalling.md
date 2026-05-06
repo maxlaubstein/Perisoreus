@@ -48,16 +48,14 @@ To clarify, the directory structure looks like:
 
 refGenome contains the Canada Jay Reference genome, and snpArcher remains just as it was when I git cloned it. Inside snp_calling_Perisoreus I have:
 
-```ls snp_calling_Perisoreus```
+```$ ls snp_calling_Perisoreus```
 
-```config  Perisoreus_sample_metadata.csv  Perisoreus_sample_sheet.csv  workflow-profiles```
-
-
-$ ls snp_calling_Perisoreus
-[1;34mconfig[0m
+```
+config  
 Perisoreus_sample_metadata.csv
 Perisoreus_sample_sheet.csv
-[1;34mworkflow-profiles[0m
+workflow-profiles
+```
 
 
 snakemake -s snpArcher/workflow/Snakefile --directory snp_calling_Perisoreus --workflow-profile snp_calling_Perisoreus/workflow-profiles/default --cores 1 -p all
