@@ -41,8 +41,16 @@ cp -r snpArcher/config/ snp_calling_Perisoreus/ #also contains a file called con
 ~~~
 
 To clarify, the directory structure looks like:
+
 ```ls /media/maxlaubstein/120TB/Perisoreus```
+
 ```refgenome  snpArcher  snp_calling_Perisoreus```
+
+refGenome contains the Canada Jay Reference genome, and snpArcher remains just as it was when I git cloned it. Inside snp_calling_Perisoreus I have:
+
+```ls snp_calling_Perisoreus```
+
+```config  Perisoreus_sample_metadata.csv  Perisoreus_sample_sheet.csv  workflow-profiles```
 
 snakemake -s snpArcher/workflow/Snakefile --directory snp_calling_Perisoreus --workflow-profile snp_calling_Perisoreus/workflow-profiles/default --cores 1 -p all
 
