@@ -1,5 +1,7 @@
-Working in /media/maxlaubstein/120TB/Perisoreus
-First download the canada jay reference genome:
+I'm working in this directory on a server at Berkeley's MVZ:
+/media/maxlaubstein/120TB/Perisoreus
+
+First, I download the Canada Jay reference genome from NCBI:
 ~~~
 source ~/.bashrc
 mkdir -p refgenome
