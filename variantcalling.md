@@ -26,3 +26,7 @@ In here I activate the snpArcher conda/mamba environment with snakemake and stuf
 ~~~
 mamba activate snparcher
 ~~~
+To keep things from all getting tangled up, I create another directory for all the snpArcher output to go:
+~~~
+mkdir -p snp_calling_Perisoreus
+~~~
