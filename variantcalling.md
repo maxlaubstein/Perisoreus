@@ -1,5 +1,7 @@
 # Canada Jay SNP Calling
 
+## Setup
+
 I'm working in this directory on a server at Berkeley's MVZ:
 
 /media/maxlaubstein/120TB/Perisoreus
@@ -61,8 +63,63 @@ Perisoreus_sample_sheet.csv
 workflow-profiles
 ```
 
+config contains config.yaml and Perisoreus_sample_metadata.csv.
 
+config/config.yaml looks something like:
+
+~~~
+# snpArcher v2 Configuration Example
+
+samples: "/media/maxlaubstein/120TB/Perisoreus/snp_calling_Perisoreus/Perisoreus_sample_sheet.csv"
+
+# Optional: per-sample metadata for modules (exclude, outgroup, lat, long, etc.)
+sample_metadata: "/media/maxlaubstein/120TB/Perisoreus/snp_calling_Perisoreus/Perisoreus_sample_metadata.csv"
+
+reference:
+  name: "perCan"
+  source: "/media/maxlaubstein/120TB/Perisoreus/refgenome/ncbi_dataset/data/GCA_056138905.1/GCA_056138905.1_P.c.canadensis_TCAG-6290_v1.0_genomic.fna"  # Can be a refseq/genbank accession, url, or path
+
+variant_calling:
+  expected_coverage: "low"  # low | high | auto (future)
+  tool: "gatk" # gatk | sentieon | bcftools | deepvariant | parabricks
+  ploidy: 2
+  gatk:
+    het_prior: 0.005
+  sentieon:
+    license: ""
+  bcftools:
+...
+...
+... and so on
+~~~
+
+Perisoreus_sample_metadata.csv looks like:
+
+~~~
+sample_id,lat,long
+MVZ193442,51.17184,-121.57046
+MVZ193443,51.15193,-121.52269
+MVZ193444,51.15193,-121.52269
+MVZ193445,51.15305,-121.53143
+MVZ193446,51.15305,-121.53143
+MVZ193449,51.14456,-121.53806
+MVZ193457,49.51151,-120.71018
+MVZ193458,49.50182,-120.69605
+MVZ193459,49.50182,-120.69605
+...
+...
+... and so on
+~~~
+
+## Testing
+
+With everything set up, I try a quick test run. The following should start running if there are no problems. From /media/maxlaubstein/120TB/Perisoreus I run:
+
+~~~
 snakemake -s snpArcher/workflow/Snakefile --directory snp_calling_Perisoreus --workflow-profile snp_calling_Perisoreus/workflow-profiles/default --cores 1 -p all
+~~~
+
+...let it go for a sec, then hit control+c (^C) to cancel. 
 
 #real run:
 snakemake -s snpArcher/workflow/Snakefile -d snp_calling_Perisoreus --workflow-profile snp_calling_Perisoreus/workflow-profiles/default
