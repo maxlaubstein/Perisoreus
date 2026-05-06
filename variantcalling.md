@@ -15,7 +15,7 @@ unzip ncbi_dataset.zip
 mamba deactivate
 cd ../
 ~~~
-Also in the directory Perisoreus, I have the sample sheet 'Perisoreus_sample_sheet.csv', containing sample metadata and the paths to the read .fastq file needed for snpArcher. Additionally, I have the directory 'snpArcher' created by git clone https://github.com/harvardinformatics/snpArcher.git, with all of the needed stuff to run snpArcher.
+Also in the directory Perisoreus, I have the sample sheet 'Perisoreus_sample_sheet.csv', containing sample metadata and the paths to the read .fastq file needed for snpArcher. Additionally, I have the directory 'snpArcher' created by ```git clone https://github.com/harvardinformatics/snpArcher.git``` with all of the needed stuff to run snpArcher.
 
 Note: for the sample sheet, the format differs between snpArcher v1 and v2. Check out this link for updated info on what columns you need: https://snparcher.readthedocs.io/en/latest/v2-migration.html
 
