@@ -40,6 +40,10 @@ cp -r snpArcher/workflow-profiles/ snp_calling_Perisoreus/ #contains default/con
 cp -r snpArcher/config/ snp_calling_Perisoreus/ #also contains a file called config.yaml
 ~~~
 
+To clarify, the directory structure looks like:
+```ls /media/maxlaubstein/120TB/Perisoreus```
+```refgenome  snpArcher  snp_calling_Perisoreus```
+
 snakemake -s snpArcher/workflow/Snakefile --directory snp_calling_Perisoreus --workflow-profile snp_calling_Perisoreus/workflow-profiles/default --cores 1 -p all
 
 #real run:
