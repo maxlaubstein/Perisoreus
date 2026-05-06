@@ -52,6 +52,14 @@ refGenome contains the Canada Jay Reference genome, and snpArcher remains just a
 
 ```config  Perisoreus_sample_metadata.csv  Perisoreus_sample_sheet.csv  workflow-profiles```
 
+
+$ ls snp_calling_Perisoreus
+[1;34mconfig[0m
+Perisoreus_sample_metadata.csv
+Perisoreus_sample_sheet.csv
+[1;34mworkflow-profiles[0m
+
+
 snakemake -s snpArcher/workflow/Snakefile --directory snp_calling_Perisoreus --workflow-profile snp_calling_Perisoreus/workflow-profiles/default --cores 1 -p all
 
 #real run:
