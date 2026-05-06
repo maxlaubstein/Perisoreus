@@ -1,3 +1,5 @@
+#Canada Jay SNP Calling
+
 I'm working in this directory on a server at Berkeley's MVZ:
 
 /media/maxlaubstein/120TB/Perisoreus
