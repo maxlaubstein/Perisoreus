@@ -121,8 +121,16 @@ snakemake -s snpArcher/workflow/Snakefile --directory snp_calling_Perisoreus --w
 
 ...let it go for a sec, then hit control+c (^C) to cancel. 
 
+I can also do a dry run. This prints/confirms all of the subjobs that are to be ran:
+
+~~~
+snakemake -s snpArcher/workflow/Snakefile \
+  --directory snp_calling_Perisoreus \
+  --workflow-profile snp_calling_Perisoreus/workflow-profiles/default \
+  --dry-run (-n)
+~~~
 #real run:
-snakemake -s snpArcher/workflow/Snakefile -d snp_calling_Perisoreus --workflow-profile snp_calling_Perisoreus/workflow-profiles/default
+snakemake -s snpArcher/workflow/Snakefile --directory snp_calling_Perisoreus --workflow-profile snp_calling_Perisoreus/workflow-profiles/default
 
 
-
+snakemake --cores 8 --use-conda --workflow-profile workflow-profiles/default
