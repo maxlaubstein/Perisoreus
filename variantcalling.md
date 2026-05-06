@@ -174,7 +174,7 @@ total                            2070
 
 ## Run it!
 
-All looks good! Now, still within the screen session, and with the mamba env 'snparcher' still active, it's time to do the real run with the following:
+All looks good! Now, still within the screen session, in the directory /media/maxlaubstein/120TB/Perisoreus, and with the mamba env 'snparcher' still active, it's time to do the real run with the following:
 
 ~~~
 snakemake -s snpArcher/workflow/Snakefile \
