@@ -30,3 +30,17 @@ To keep things from all getting tangled up, I create another directory for all t
 ~~~
 mkdir -p snp_calling_Perisoreus
 ~~~
+From the snpArcher directory, I also copy the workflow-profiles 'snpArcher/workflow-profiles/default/config.yaml' and the config 'snpArcher/config/config.yaml' file into here into this working directory.bit redundant I guess. The workflow-profile specifies resources and stuff, whereas the general config file specifies what analyses are gonna be run, and the paths to things like the samplesheet and reference genome. I largely leave this default, except I put relevant file paths, and turn on QC analysis (set to 'true').
+
+~~~
+cp -r snpArcher/workflow-profiles/ snp_calling_Perisoreus/ #contains default/config.yaml
+cp -r snpArcher/config/ snp_calling_Perisoreus/ #also contains a file called config.yaml
+~~~
+
+snakemake -s snpArcher/workflow/Snakefile --directory snp_calling_Perisoreus --workflow-profile snp_calling_Perisoreus/workflow-profiles/default --cores 1 -p all
+
+#real run:
+snakemake -s snpArcher/workflow/Snakefile -d snp_calling_Perisoreus --workflow-profile snp_calling_Perisoreus/workflow-profiles/default
+
+
+
