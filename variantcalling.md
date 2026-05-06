@@ -179,5 +179,6 @@ All looks good! Now, still within the screen session, in the directory /media/ma
 ~~~
 snakemake -s snpArcher/workflow/Snakefile \
   --directory snp_calling_Perisoreus \
-  --workflow-profile snp_calling_Perisoreus/workflow-profiles/default
+  --workflow-profile snp_calling_Perisoreus/workflow-profiles/default \
+  --cores 35
 ~~~
