@@ -16,3 +16,13 @@ mamba deactivate
 cd ../
 ~~~
 Also in the directory Perisoreus, I have the sample sheet 'Perisoreus_sample_sheet.csv', containing sample metadata and the paths to the read .fastq file needed for snpArcher. Additionally, I have the directory 'snpArcher' created by git clone https://github.com/harvardinformatics/snpArcher.git, with all of the needed stuff to run snpArcher.
+
+I then launch a screen session:
+~~~
+screen -S snpcalling
+~~~
+
+In here I activate the snpArcher conda/mamba environment with snakemake and stuff:
+~~~
+mamba activate snparcher
+~~~
