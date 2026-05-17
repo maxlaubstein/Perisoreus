@@ -52,12 +52,13 @@ cp -r snpArcher/config/ snp_calling_Perisoreus/ #also contains a file called con
 
 To clarify, the directory structure looks like:
 
-```$ ls /media/maxlaubstein/120TB/Perisoreus```
+```$ ls /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus```
 
 ```
 refgenome
 snpArcher
 snp_calling_Perisoreus
+(..also Raw_data_from_Lydia and Perisoreus_canadensis_reference_genome which I can't delete)
 ```
 
 refGenome contains the Canada Jay Reference genome, and snpArcher remains just as it was when I git cloned it. Inside snp_calling_Perisoreus I have:
