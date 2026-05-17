@@ -17,6 +17,14 @@ unzip ncbi_dataset.zip
 mamba deactivate
 cd ../
 ~~~
+
+I need to set up a mamba environment with snakemake for snparcher:
+
+~~~
+mamba create -c conda-forge -c bioconda -n snparcher "snakemake>=9" "python==3.11.4"
+mamba activate snparcher
+~~~
+
 Additionally, I have the directory 'snpArcher' created by ```git clone https://github.com/harvardinformatics/snpArcher.git``` with all of the needed stuff to run snpArcher.
 
 
