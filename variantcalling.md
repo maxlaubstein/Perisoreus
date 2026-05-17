@@ -170,31 +170,32 @@ bwa_mem                           228
 genmap_mappability                  1
 picard_intervals                    1
 qc_contig_map                       1
-create_db_intervals                 1
+filter_picard_intervals             1
 mappability_bed                     1
 merge_library_bams                227
-concat_interval_vcfs                1
+create_db_intervals                 1
 markdup_library                   227
+concat_interval_vcfs                1
 merge_dedup_libraries             227
-qc_vcftools_individuals             1
 bam_stats                         227
 mosdepth                          227
-qc_subsample_snps                   1
+qc_vcftools_individuals             1
 callable_coverage_thresholds        1
 clam_collect                        1
 parse_bam_stats                   227
-qc_prepare_plink_inputs             1
+qc_subsample_snps                   1
 clam_loci                           1
 combine_qc_metrics                  1
-qc_plink                            1
+qc_prepare_plink_inputs             1
 coverage_bed                        1
 qc_copy_qc_report                   1
-qc_setup_admixture                  1
+qc_plink                            1
 callable_sites_bed                  1
+qc_setup_admixture                  1
 qc_admixture                        1
 qc_qc_dashboard                     1
 all                                 1
-total                            2070
+total                            2071
 ~~~
 
 ## Run it!
