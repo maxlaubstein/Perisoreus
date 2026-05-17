@@ -2,9 +2,9 @@
 
 ## Setup
 
-I'm working in this directory on a server at Berkeley's MVZ:
+I'm working in this directory on a server (247) at Berkeley's MVZ:
 
-/media/maxlaubstein/120TB/Perisoreus
+/media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus
 
 First, I download the Canada Jay reference genome from NCBI:
 ~~~
