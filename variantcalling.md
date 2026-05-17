@@ -106,6 +106,18 @@ variant_calling:
 ... and so on
 ~~~
 
+Perisoreus_sample_sheet.csv looks like:
+
+~~~
+sample_id,input_type,input
+MVZ193442,fastq,/media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus/Raw_data_from_Lydia/PCAN-I-A01_MVZ193442_R1.fastq.gz;/media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus/Raw_data_from_Lydia/PCAN-I-A01_MVZ193442_R2.fastq.gz
+MVZ193443,fastq,/media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus/Raw_data_from_Lydia/PCAN-I-B01_MVZ193443_R1.fastq.gz;/media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus/Raw_data_from_Lydia/PCAN-I-B01_MVZ193443_R2.fastq.gz
+MVZ193444,fastq,/media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus/Raw_data_from_Lydia/PCAN-I-C01_MVZ193444_R1.fastq.gz;/media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus/Raw_data_from_Lydia/PCAN-I-C01_MVZ193444_R2.fastq.gz
+...
+...
+... and so on
+~~~
+
 Perisoreus_sample_metadata.csv looks like:
 
 ~~~
