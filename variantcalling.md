@@ -79,14 +79,14 @@ config/config.yaml looks something like:
 ~~~
 # snpArcher v2 Configuration Example
 
-samples: "/media/maxlaubstein/120TB/Perisoreus/snp_calling_Perisoreus/Perisoreus_sample_sheet.csv"
+samples: "/media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus/snp_calling_Perisoreus/Perisoreus_sample_sheet.csv"
 
 # Optional: per-sample metadata for modules (exclude, outgroup, lat, long, etc.)
-sample_metadata: "/media/maxlaubstein/120TB/Perisoreus/snp_calling_Perisoreus/Perisoreus_sample_metadata.csv"
+sample_metadata: "/media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus/snp_calling_Perisoreus/Perisoreus_sample_metadata.csv"
 
 reference:
   name: "perCan"
-  source: "/media/maxlaubstein/120TB/Perisoreus/refgenome/ncbi_dataset/data/GCA_056138905.1/GCA_056138905.1_P.c.canadensis_TCAG-6290_v1.0_genomic.fna"  # Can be a refseq/genbank accession, url, or path
+  source: "/media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus/refgenome/ncbi_dataset/data/GCA_056138905.1/GCA_056138905.1_P.c.canadensis_TCAG-6290_v1.0_genomic.fna"  # Can be a refseq/genbank accession, url, or path
 
 variant_calling:
   expected_coverage: "low"  # low | high | auto (future)
@@ -97,6 +97,10 @@ variant_calling:
   sentieon:
     license: ""
   bcftools:
+    min_mapq: 20
+    min_baseq: 20
+    max_depth: 250
+
 ...
 ...
 ... and so on
