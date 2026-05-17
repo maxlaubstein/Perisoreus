@@ -126,7 +126,7 @@ MVZ193459,49.50182,-120.69605
 
 ## Testing
 
-With everything set up, I try a quick test run. The following should start running if there are no problems. From /media/maxlaubstein/120TB/Perisoreus I run:
+With everything set up, I try a quick test run. The following should start running if there are no problems. From /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus I run:
 
 ~~~
 snakemake -s snpArcher/workflow/Snakefile --directory snp_calling_Perisoreus --workflow-profile snp_calling_Perisoreus/workflow-profiles/default --cores 1 -p all
