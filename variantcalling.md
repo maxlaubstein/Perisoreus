@@ -212,6 +212,10 @@ snakemake -s snpArcher/workflow/Snakefile \
 ... sometimes interruptions may occur. To resume an interrupted snparcher snakemake run, do:
 
 ~~~
+snakemake \
+  --directory snp_calling_Perisoreus \
+  --unlock
+
 snakemake -s snpArcher/workflow/Snakefile \
   --directory snp_calling_Perisoreus \
   --workflow-profile snp_calling_Perisoreus/workflow-profiles/default \
