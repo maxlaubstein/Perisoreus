@@ -213,6 +213,7 @@ snakemake -s snpArcher/workflow/Snakefile \
 
 ~~~
 snakemake \
+  -s snpArcher/workflow/Snakefile \
   --directory snp_calling_Perisoreus \
   --unlock
 
