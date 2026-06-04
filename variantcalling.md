@@ -220,6 +220,6 @@ snakemake \
 snakemake -s snpArcher/workflow/Snakefile \
   --directory snp_calling_Perisoreus \
   --workflow-profile snp_calling_Perisoreus/workflow-profiles/default \
-  --cores 44 \
+  --cores 46 \
   --rerun-incomplete
 ~~~
