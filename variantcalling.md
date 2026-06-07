@@ -206,7 +206,7 @@ All looks good! Now, still within the screen session, in the directory /media/ma
 snakemake -s snpArcher/workflow/Snakefile \
   --directory snp_calling_Perisoreus \
   --workflow-profile snp_calling_Perisoreus/workflow-profiles/default \
-  --cores 35
+  --cores 46
 ~~~
 
 ... sometimes interruptions may occur. To resume an interrupted snparcher snakemake run, do:
