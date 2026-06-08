@@ -33,6 +33,33 @@ bcftools view -r CM148719.1,CM148720.1,CM148721.1,CM148722.1,CM148723.1,CM148724
   Perisoreus_clean.vcf.gz \
   -O z -o Perisoreus_clean_autosomes.vcf.gz
 
+#LD pruning: 
+plink --vcf Perisoreus_clean_autosomes.vcf.gz \
+  --const-fid \
+  --allow-extra-chr \
+  --allow-no-sex \
+  --set-missing-var-ids @:# \
+  --indep-pairwise 50 10 0.1 \
+  --out Perisoreus_LDPruned_autosomes
 
+plink --vcf Perisoreus_clean_autosomes.vcf.gz \
+  --const-fid \
+  --allow-extra-chr \
+  --allow-no-sex \
+  --set-missing-var-ids @:#  \
+  --extract Perisoreus_LDPruned_autosomes.prune.in \
+  --recode vcf \
+  --out Perisoreus_LDPruned_autosomes
+
+  #plink messes up the sample names in the vcf with "0_":
+  bcftools reheader \
+    -s <(bcftools query -l Perisoreus_LDPruned_autosomes.vcf | sed 's/^0_//') \
+    Perisoreus_LDPruned_autosomes.vcf \
+    -o Perisoreus_LDPruned_autosomes_fixed.vcf
+
+rm Perisoreus_LDPruned_autosomes.vcf
+mv Perisoreus_LDPruned_autosomes_fixed.vcf Perisoreus_LDPruned_autosomes.vcf
+bgzip Perisoreus_LDPruned_autosomes.vcf
+tabix -p vcf Perisoreus_LDPruned_autosomes.vcf.gz
 
 
