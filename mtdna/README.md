@@ -143,3 +143,19 @@ Matrix: blastn matrix 1 -2
 Gap Penalties: Existence: 0, Extension: 2.5
 
 ~~~
+
+~~~
+tabix -p vcf Perisoreus_mtdna_RAW.vcf.gz
+bcftools view -r CM148749.1:4008-5048 Perisoreus_mtdna_RAW.vcf.gz -Oz -o ND2.vcf.gz
+samtools faidx mitogenome.fa CM148749.1:4008-5048 > ND2_ref.fa
+tabix -p vcf ND2.vcf.gz
+~~~
+
+Get full ND2 fasta for each individual in the vcf:
+~~~
+mkdir -p output_ND2_fastas
+for sample in $(bcftools query -l ND2.vcf.gz); do
+  bcftools consensus -f ND2_ref.fa -s "$sample" ND2.vcf.gz > output_ND2_fastas/${sample}_ND2.fa
+done
+
+~~~
