@@ -12,27 +12,27 @@ Organizing the read data. All 227 samples were sequenced on 3 lanes (data in `Ra
 Concatenating the files for the samples that were sequenced a second time:
 
 ~~~
-cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus
 screen -S merge
+cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus
+mkdir -p read_data
 
-MAIN=Raw_data_from_Lydia
-EXTRA=CCPCAN_partiallane_May2025
-OUT=read_data
-mkdir -p $OUT
-
-for m in $MAIN/*_R1.fastq.gz; do
-  id=$(basename $m _R1.fastq.gz)
+merge_one() {
+  m=$1; id=$(basename $m _R1.fastq.gz)
+  MAIN=Raw_data_from_Lydia; EXTRA=CCPCAN_partiallane_May2025; OUT=read_data
   e=$(ls $EXTRA/${id}_S*_L004_R1_001.fastq.gz 2>/dev/null)
   if [ -n "$e" ]; then
     cat $m "$e"                                  > $OUT/${id}_R1.fastq.gz
     cat $MAIN/${id}_R2.fastq.gz "${e/_R1_/_R2_}" > $OUT/${id}_R2.fastq.gz
     echo "MERGED $id"
   else
-    ln -s $(realpath $m)                    $OUT/${id}_R1.fastq.gz
-    ln -s $(realpath $MAIN/${id}_R2.fastq.gz) $OUT/${id}_R2.fastq.gz
+    ln -sf $(realpath $m)                     $OUT/${id}_R1.fastq.gz
+    ln -sf $(realpath $MAIN/${id}_R2.fastq.gz) $OUT/${id}_R2.fastq.gz
     echo "LINKED $id"
   fi
-done | tee $OUT/merge_log.txt
+}
+export -f merge_one
+
+ls Raw_data_from_Lydia/*_R1.fastq.gz | xargs -P 4 -I{} bash -c 'merge_one {}' | tee read_data/merge_log.txt
 ~~~
 
 
