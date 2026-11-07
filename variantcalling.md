@@ -35,6 +35,13 @@ export -f merge_one
 ls Raw_data_from_Lydia/*_R1.fastq.gz | xargs -P 4 -I{} bash -c 'merge_one {}' | tee read_data/merge_log.txt
 ~~~
 
+Unpacking the extra Boreal samples:
+
+~~~
+cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus/extra_boreal_samples
+screen -S unpack_boreal
+ls cjs*.tar.gz | xargs -P 2 -I{} sh -c 'tar -xzf {} && echo "DONE {}" || echo "FAILED {}"' | tee untar_log.txt
+~~~
 
 
 First, I download the Canada Jay reference genome from NCBI:
