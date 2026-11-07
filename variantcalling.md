@@ -44,9 +44,10 @@ ls cjs*.tar.gz | xargs -P 2 -I{} sh -c 'tar -xzf {} && echo "DONE {}" || echo "F
 ~~~
 
 
-First, I download the Canada Jay reference genome from NCBI:
+Next, I download the Canada Jay reference genome from NCBI:
 ~~~
 source ~/.bashrc
+cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus/
 mkdir -p refgenome
 cd refgenome
 mamba activate ncbi_datasets
