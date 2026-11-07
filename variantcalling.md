@@ -12,6 +12,7 @@ Organizing the read data. All 227 samples were sequenced on 3 lanes (data in `Ra
 Concatenating the files for the samples that were sequenced a second time:
 
 ~~~
+cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus
 screen -S merge
 
 MAIN=Raw_data_from_Lydia
