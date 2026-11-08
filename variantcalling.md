@@ -87,6 +87,20 @@ export -f merge_cjs
 xargs -a extra_boreal_samples/cjs_names.tsv -P 2 -L 1 bash -c 'merge_cjs $0 $1' | tee read_data/cjs_merge_log.txt
 ~~~
 
+They have way higher coverage than the other samples, so I downsample them:
+~~~
+cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus
+conda activate seqtools
+mkdir -p read_data_10x
+
+for s in AKA1001 ANTI002 CAB026 NL001 NL007 NEWA062 NWOR002 SOR007 VI006 VI007 CO022 CO034 NEWA019 NWMT007 UT016 UT024; do
+  rasusa reads --coverage 10 --genome-size 1.32gb -s 42 \
+    -o read_data_10x/${s}_R1.fastq.gz -o read_data_10x/${s}_R2.fastq.gz \
+    read_data/${s}_R1.fastq.gz read_data/${s}_R2.fastq.gz \
+    && echo "DONE $s" || echo "FAILED $s"
+done 2>&1 | tee read_data_10x/rasusa_log.txt
+~~~
+
 
 
 Next, I download the Canada Jay reference genome from NCBI:
@@ -101,6 +115,11 @@ unzip ncbi_dataset.zip
 mamba deactivate
 cd ../
 ~~~
+
+I want to include the reference genome sample itself in the snp-calling. To do this, I subsample Illumina-like reads at ~10x coverage from the reference genome PacBio reads:
+~~~
+~~~
+
 
 I need to set up a mamba environment with snakemake for snparcher:
 
