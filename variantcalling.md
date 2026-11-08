@@ -43,6 +43,25 @@ screen -S unpack_boreal
 ls cjs*.tar.gz | xargs -P 2 -I{} sh -c 'tar -xzf {} && echo "DONE {}" || echo "FAILED {}"' | tee untar_log.txt
 ~~~
 
+Reads in these extra Boreal samples also need to be merged, and moved to `read_data`:
+
+~~~
+cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus
+screen -S cjsmerge
+
+merge_cjs() {
+  d=$1; s=$(basename $d)                       # e.g. cjs01_B1
+  for r in R1 R2; do
+    cat $(ls $d/*_L00[1-8]_${r}_001.fastq.gz | sort) > read_data/${s}_${r}.fastq.gz
+  done
+  echo "MERGED $s"
+}
+export -f merge_cjs
+
+ls -d extra_boreal_samples/cjs*_*/ | sed 's#/$##' | xargs -P 2 -I{} bash -c 'merge_cjs {}' | tee read_data/cjs_merge_log.txt
+~~~
+
+
 
 Next, I download the Canada Jay reference genome from NCBI:
 ~~~
