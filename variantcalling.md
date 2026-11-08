@@ -122,8 +122,8 @@ I want to include the reference genome sample itself in the snp-calling. To do t
 conda activate seqtools
 
 cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus
-mkdir -p refgenome_reads
-cd refbird
+mkdir -p refsample_reads
+cd refsample_reads
 esearch -db sra -query SAMN23458111 | efetch -format runinfo | cut -d, -f1,7,13,19 | tee runinfo.csv
 ~~~
 
