@@ -49,29 +49,36 @@ Reads in these extra Boreal samples also need to be merged, named consistently, 
 screen -S cjsmerge
 cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus
 
+# clean up leftovers from the failed run
+rm -f read_data/_R1.fastq.gz read_data/_R2.fastq.gz read_data/cjs_merge_log.txt
+
+# folder -> Burg ID (space-separated)
 cat > extra_boreal_samples/cjs_names.tsv <<'EOF'
-cjs01_B1	AKA1001
-cjs02_B2	ANTI002
-cjs03_B3	CAB026
-cjs04_B4	NL001
-cjs05_B5	NL007
-cjs06_P1	NEWA062
-cjs07_P2	NWOR002
-cjs08_P3	SOR007
-cjs09_P4	VI006
-cjs10_P5	VI007
-cjs11_R1	CO022
-cjs12_R2	CO034
-cjs13_R3	NEWA019
-cjs14_R4	NWMT007
-cjs15_R5	UT016
-cjs16_R6	UT024
+cjs01_B1 AKA1001
+cjs02_B2 ANTI002
+cjs03_B3 CAB026
+cjs04_B4 NL001
+cjs05_B5 NL007
+cjs06_P1 NEWA062
+cjs07_P2 NWOR002
+cjs08_P3 SOR007
+cjs09_P4 VI006
+cjs10_P5 VI007
+cjs11_R1 CO022
+cjs12_R2 CO034
+cjs13_R3 NEWA019
+cjs14_R4 NWMT007
+cjs15_R5 UT016
+cjs16_R6 UT024
 EOF
 
 merge_cjs() {
   d=extra_boreal_samples/$1; out=$2
+  [ -d "$d" ] && [ -n "$out" ] || { echo "ERROR bad line: $1 $2"; return 1; }
   for r in R1 R2; do
-    cat $(ls $d/*_L00[1-8]_${r}_001.fastq.gz | sort) > read_data/${out}_${r}.fastq.gz
+    files=$(ls $d/*_L00[1-8]_${r}_001.fastq.gz | sort)
+    [ $(echo "$files" | wc -l) -eq 8 ] || { echo "ERROR $1 $r: not 8 lanes"; return 1; }
+    cat $files > read_data/${out}_${r}.fastq.gz
   done
   echo "MERGED $1 -> $out"
 }
