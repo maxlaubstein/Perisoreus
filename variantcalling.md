@@ -43,22 +43,41 @@ screen -S unpack_boreal
 ls cjs*.tar.gz | xargs -P 2 -I{} sh -c 'tar -xzf {} && echo "DONE {}" || echo "FAILED {}"' | tee untar_log.txt
 ~~~
 
-Reads in these extra Boreal samples also need to be merged, and moved to `read_data`:
+Reads in these extra Boreal samples also need to be merged, named consistently, and moved to `read_data`:
 
 ~~~
-cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus
 screen -S cjsmerge
+cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus
+
+cat > extra_boreal_samples/cjs_names.tsv <<'EOF'
+cjs01_B1	AKA1001
+cjs02_B2	ANTI002
+cjs03_B3	CAB026
+cjs04_B4	NL001
+cjs05_B5	NL007
+cjs06_P1	NEWA062
+cjs07_P2	NWOR002
+cjs08_P3	SOR007
+cjs09_P4	VI006
+cjs10_P5	VI007
+cjs11_R1	CO022
+cjs12_R2	CO034
+cjs13_R3	NEWA019
+cjs14_R4	NWMT007
+cjs15_R5	UT016
+cjs16_R6	UT024
+EOF
 
 merge_cjs() {
-  d=$1; s=$(basename $d)                       # e.g. cjs01_B1
+  d=extra_boreal_samples/$1; out=$2
   for r in R1 R2; do
-    cat $(ls $d/*_L00[1-8]_${r}_001.fastq.gz | sort) > read_data/${s}_${r}.fastq.gz
+    cat $(ls $d/*_L00[1-8]_${r}_001.fastq.gz | sort) > read_data/${out}_${r}.fastq.gz
   done
-  echo "MERGED $s"
+  echo "MERGED $1 -> $out"
 }
 export -f merge_cjs
 
-ls -d extra_boreal_samples/cjs*_*/ | sed 's#/$##' | xargs -P 2 -I{} bash -c 'merge_cjs {}' | tee read_data/cjs_merge_log.txt
+xargs -a extra_boreal_samples/cjs_names.tsv -P 2 -L 1 bash -c 'merge_cjs $0 $1' | tee read_data/cjs_merge_log.txt
 ~~~
 
 
