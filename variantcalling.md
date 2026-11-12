@@ -119,7 +119,6 @@ I want to include the reference genome sample itself in the snp-calling. To do t
 Because they have super high coverage, I need to downsample them to ~10x coverage.
 
 ~~~
-screen -S b0
 conda activate seqtools
 cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus/refsample_reads
 
