@@ -101,8 +101,6 @@ for s in AKA1001 ANTI002 CAB026 NL001 NL007 NEWA062 NWOR002 SOR007 VI006 VI007 C
 done 2>&1 | tee read_data_10x/rasusa_log.txt
 ~~~
 
-
-
 Next, I download the Canada Jay reference genome from NCBI:
 ~~~
 source ~/.bashrc
@@ -116,17 +114,24 @@ mamba deactivate
 cd ../
 ~~~
 
-I want to include the reference genome sample itself in the snp-calling. To do this, I subsample Illumina-like reads at ~10x coverage from the reference genome PacBio reads:
+I want to include the reference genome sample itself in the snp-calling. To do this, I downloaded high-coverage Illumina reads that were used to assist in building the reference genome. They're stored in `refsample_reads`. These are results from just 1 lane (already something like ~120x coverage). The specific files I decided to use were: `H57FMCCX2_6290_CJ_A_S1_L001_R1_001.fastq.gz` and `H57FMCCX2_6290_CJ_A_S1_L001_R2_001.fastq.gz`.
+
+Because they have super high coverage, I need to downsample them to ~10x coverage.
 
 ~~~
+screen -S b0
 conda activate seqtools
+cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus/refsample_reads
 
-cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus
-mkdir -p refsample_reads
-cd refsample_reads
-esearch -db sra -query SAMN23458111 | efetch -format runinfo | cut -d, -f1,7,13,19 | tee runinfo.csv
+rasusa reads --coverage 10 --genome-size 1.32gb -s 42 \
+  -o TCAG6290_10x_R1.fastq.gz -o TCAG6290_10x_R2.fastq.gz \
+  H57FMCCX2_6290_CJ_A_S1_L001_R1_001.fastq.gz H57FMCCX2_6290_CJ_A_S1_L001_R2_001.fastq.gz && \
+echo "RASUSA DONE"
 ~~~
 
+
+
+## Running the Pipeline
 
 I need to set up a mamba environment with snakemake for snparcher:
 
