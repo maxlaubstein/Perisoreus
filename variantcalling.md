@@ -101,6 +101,14 @@ for s in AKA1001 ANTI002 CAB026 NL001 NL007 NEWA062 NWOR002 SOR007 VI006 VI007 C
 done 2>&1 | tee read_data_10x/rasusa_log.txt
 ~~~
 
+Turns out I already have resequencing data for VI006 and VI007, so I can delete these:
+
+~~~
+cd /media/maxlaubstein/22ea017e-93fd-4567-876e-3b9a92534a89/maxlaubstein/Perisoreus/read_data_10x
+rm VI006_R*
+rm VI007_R*
+~~~
+
 Next, I download the Canada Jay reference genome from NCBI:
 ~~~
 source ~/.bashrc
